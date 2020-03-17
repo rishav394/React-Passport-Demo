@@ -9,10 +9,12 @@ Run on express server
 ```
 cd server/
 yarn install
-nodemon index.js
+node index.js
 ```
 
 Go to localhost:4000
+
+**Then on a different console.**
 
 ### Client
 
@@ -23,3 +25,10 @@ yarn run start
 ```
 
 Go to localhost:3000
+
+
+### Important
+
+Either use `.env` and `dotenv`
+Or
+Add a `keys.js` file under `config` with the same keys as in `.env`

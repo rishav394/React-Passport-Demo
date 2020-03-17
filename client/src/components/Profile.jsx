@@ -17,6 +17,8 @@ function Profile({ profile }) {
 							<span className="black-text flow-text">
 								{profile.user.username}
 							</span>
+							<br />
+							<span className="grey-text">{profile.user.email}</span>
 						</div>
 					</div>
 				</div>
