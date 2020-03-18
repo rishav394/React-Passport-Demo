@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from './reducers/rootReducer';
+import { createStore } from 'redux';
 import '../node_modules/materialize-css/dist/css/materialize.min.css';
+import App from './App';
 import './index.css';
+import rootReducer from './reducers/rootReducer';
+import * as serviceWorker from './serviceWorker';
 
 const store = createStore(rootReducer);
 

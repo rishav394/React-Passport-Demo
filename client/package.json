@@ -12,11 +12,6 @@
 		"react-scripts": "3.4.0",
 		"redux": "^4.0.5"
 	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "pretty-quick --staged"
-		}
-	},
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",

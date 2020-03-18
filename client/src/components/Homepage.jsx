@@ -1,12 +1,12 @@
-import Header from './Header';
-import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import qs from 'qs';
-import OrderTable from './OrderTable';
-import NoAuth from './NoAuth';
-import Profile from './Profile';
+import { Link } from 'react-router-dom';
+import manageQuery from '../lib/queryHelper';
 import AddOrder from './AddOrder';
+import Header from './Header';
+import NoAuth from './NoAuth';
+import OrderTable from './OrderTable';
+import Profile from './Profile';
 
 class HomePage extends Component {
 	state = {
@@ -46,18 +46,7 @@ class HomePage extends Component {
 
 	render() {
 		const { authenticated } = this.state;
-		const stateOrders = this.props.orders;
-
-		var page_no = qs.parse(this.props.location.search, {
-			ignoreQueryPrefix: true,
-		}).page;
-
-		if (!page_no || page_no * 10 > stateOrders.length)
-			this.props.history.push('/?page=1');
-		var orderSeries = page_no - 1;
-		var start = orderSeries * 10 < stateOrders.length ? orderSeries * 10 : 0;
-		var end = start + 15 < stateOrders.length ? start + 15 : stateOrders.length;
-
+		const { stateOrders, start, end, page_no } = manageQuery(this.props);
 		var orders = stateOrders.slice(start, end);
 
 		const jsx = !authenticated ? (
@@ -85,19 +74,36 @@ class HomePage extends Component {
 						</div>
 						<div className="col s12 m9">
 							<OrderTable
+								{...this.props}
 								orders={orders}
 								deleteOrder={this._deleteOrder}
 								editOrder={this._editOrder}
 							/>
 							<div className="center ">
 								<span>
-									<Link to={'/?page=' + (parseInt(page_no) - 1)}>
+									<Link
+										to={
+											'/' +
+											this.props.location.search.replace(
+												/page=\d+/,
+												'page=' + (parseInt(page_no) - 1),
+											)
+										}
+									>
 										<i className="material-icons med">chevron_left</i>
 									</Link>
 								</span>
 								<span>Page {page_no}</span>
 								<span>
-									<Link to={'/?page=' + (parseInt(page_no) + 1)}>
+									<Link
+										to={
+											'/' +
+											this.props.location.search.replace(
+												/page=\d+/,
+												'page=' + (parseInt(page_no) + 1),
+											)
+										}
+									>
 										<i className="material-icons med">chevron_right</i>
 									</Link>
 								</span>

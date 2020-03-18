@@ -1,6 +1,6 @@
+import M from 'materialize-css';
 import React, { Component } from 'react';
 import { AppRouter } from './AppRouter';
-import M from 'materialize-css';
 
 class App extends Component {
 	render() {

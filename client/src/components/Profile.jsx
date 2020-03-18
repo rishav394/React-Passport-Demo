@@ -3,22 +3,15 @@ import React from 'react';
 function Profile({ profile }) {
 	return (
 		<div>
-			<div>
-				<div className="card-panel grey lighten-5 z-depth-0">
-					<div className="row valign-wrapper">
-						<div className="col s4">
-							<img
-								src={profile.user.avatar}
-								alt="X"
-								className="circle responsive-img"
-							/>
+			<div className="row" style={{ marginBottom: 0 }}>
+				<div className="col s10 offset-s1">
+					<div className="card z-depth-0">
+						<div className="card-image hide-on-small-and-down">
+							<img src={profile.user.avatar} />
 						</div>
-						<div className="col s8">
-							<span className="black-text flow-text">
-								{profile.user.username}
-							</span>
-							<br />
-							<span className="grey-text">{profile.user.email}</span>
+						<div className="card-content center">
+							<p>{profile.user.username}</p>
+							<p className="grey-text">{profile.user.email}</p>
 						</div>
 					</div>
 				</div>

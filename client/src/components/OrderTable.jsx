@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
 import M from 'materialize-css';
+import qs from 'qs';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import validate from '../lib/validator';
-
 class Ordertable extends Component {
 	state = {
 		tempOrder: {
@@ -56,6 +57,21 @@ class Ordertable extends Component {
 				error: '',
 			});
 		}
+	};
+
+	_handleSort = e => {
+		var sort = qs.parse(this.props.location.search, {
+			ignoreQueryPrefix: true,
+		}).sort;
+
+		var add = '&des=';
+		var des = qs.parse(this.props.location.search, {
+			ignoreQueryPrefix: true,
+		}).des;
+
+		if (sort === e.target.id) add += des === 'true' ? 'false' : 'true';
+
+		this.props.history.push('/?page=1&sort=' + e.target.id.toLowerCase() + add);
 	};
 
 	render() {
@@ -134,10 +150,26 @@ class Ordertable extends Component {
 				<table className="highlight">
 					<thead>
 						<tr>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Product</th>
-							<th>Quantity</th>
+							<th
+								className="sortable"
+								id="customer_name"
+								onClick={this._handleSort}
+							>
+								Name
+							</th>
+							<th
+								className="sortable"
+								id="customer_email"
+								onClick={this._handleSort}
+							>
+								Email
+							</th>
+							<th className="sortable" id="product" onClick={this._handleSort}>
+								Product
+							</th>
+							<th className="sortable" id="quantity" onClick={this._handleSort}>
+								Quantity
+							</th>
 							<th>Edit</th>
 							<th>Delete</th>
 						</tr>
@@ -171,4 +203,4 @@ class Ordertable extends Component {
 	}
 }
 
-export default Ordertable;
+export default withRouter(Ordertable);

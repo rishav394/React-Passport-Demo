@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import uid from '../lib/uid';
-import { connect } from 'react-redux';
 import M from 'materialize-css';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import uid from '../lib/uid';
 import validate from '../lib/validator';
 class AddOrder extends Component {
 	state = {

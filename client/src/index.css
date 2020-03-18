@@ -65,3 +65,7 @@ th {
 #nav-mobile > li:hover {
 	background-color: #a067f7;
 }
+
+.sortable {
+	cursor: pointer;
+}
