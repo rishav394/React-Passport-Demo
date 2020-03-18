@@ -1,11 +1,17 @@
 {
 	"dependencies": {},
+	"scripts": {
+		"client": "cd client && yarn start",
+		"server": "node server/index.js",
+		"dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+	},
 	"husky": {
 		"hooks": {
 			"pre-commit": "pretty-quick --staged"
 		}
 	},
 	"devDependencies": {
+		"concurrently": "^5.1.0",
 		"husky": "^4.2.3",
 		"prettier": "^1.19.1",
 		"pretty-quick": "^2.0.1"

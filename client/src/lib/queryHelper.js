@@ -38,7 +38,7 @@ const manageQuery = props => {
 	if (
 		qs.parse(props.location.search, {
 			ignoreQueryPrefix: true,
-		}).des == 'true'
+		}).des === 'true'
 	) {
 		stateOrders.reverse();
 	}

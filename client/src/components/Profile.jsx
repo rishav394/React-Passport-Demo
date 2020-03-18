@@ -7,7 +7,7 @@ function Profile({ profile }) {
 				<div className="col s10 offset-s1">
 					<div className="card z-depth-0">
 						<div className="card-image hide-on-small-and-down">
-							<img src={profile.user.avatar} />
+							<img src={profile.user.avatar} alt="" />
 						</div>
 						<div className="card-content center">
 							<p>{profile.user.username}</p>

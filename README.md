@@ -1,8 +1,14 @@
 # Internship Project
 
-## How to run
+## How to run (Development)
 
-### Server
+From the main directory after installing all the `node_modules` (`yarn install`) in both `client` and `server`, run
+
+```
+yarn dev
+```
+
+### Server (Production)
 
 Run on express server
 
@@ -16,16 +22,16 @@ Go to localhost:4000
 
 **Then on a different console.**
 
-### Client
+### Client (Production)
 
 ```
 cd client/
 yarn install
-yarn run start
+yarn run build
+serve build
 ```
 
 Go to localhost:3000
-
 
 ### Important
 
